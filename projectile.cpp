@@ -52,7 +52,7 @@ Projectile::Projectile(float x, float y, float mass)
     Position.y = y;
 }
 
-void Projectile::UpdatePosition()
+void Projectile::Update()
 {
     Physics::Instance()->ApplyGravity(MoveVector);
 
