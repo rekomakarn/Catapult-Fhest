@@ -27,7 +27,7 @@ class Projectile
         Projectile(float mass);
         Projectile(float x, float y, float mass);
 
-        void UpdatePosition();
+        void Update();
         void CheckCollision();
         void Draw();
         void Destroy();

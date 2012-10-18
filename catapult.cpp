@@ -32,6 +32,18 @@ void Catapult::Rotate(bool CW)
     iRotation += CW ? 1 : -1;
 }
 
+void Catapult::Update()
+{
+    if(proj)
+		proj->Update();									// Catapult calls the update for projectile
+	if(proj && proj->bCollisionActive == false)
+	{
+		proj->Destroy();
+		proj = NULL;
+	}
+
+}
+
 void Catapult::Draw()
 {
     forcegauge.Draw();
@@ -76,32 +88,20 @@ void Catapult::Draw()
     glVertex2i(Position.x + 10, Position.y);
     glEnd();
 
-    DrawProjectile();
+    if(proj)
+    	if(proj->bCollisionActive)
+            proj->Draw();
 }
 
 void Catapult::SpawnProjectile()
 {
+	if(proj)										// If there allready is a projectile active
+	{
+		proj->Destroy();							// then destroy it before creating a new one
+		proj = NULL;
+	}
+
     Vector2D vect = Vector2D(iForce, 0);
-
     vect = vect.Rotate(-iRotation);
-
     proj = new Projectile(Position, vect);
-}
-
-void Catapult::Update()
-{
-    if(proj)
-        proj->UpdatePosition();
-}
-
-void Catapult::DrawProjectile()
-{
-	// Draw the projectile (if any)
-    if(proj)
-    {
-    	if(proj->bCollisionActive)
-            proj->Draw();
-        else
-            proj->Destroy();
-    }
 }

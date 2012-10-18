@@ -34,8 +34,6 @@
 		<Linker>
 			<Add option="-lmingw32 -lSDLmain -lSDL -lopengl32 -lglu32" />
 		</Linker>
-		<Unit filename="ForceGauge.h" />
-		<Unit filename="Game.cpp" />
 		<Unit filename="ai.cpp" />
 		<Unit filename="ai.h" />
 		<Unit filename="catapult.cpp" />
@@ -43,6 +41,8 @@
 		<Unit filename="drawing.cpp" />
 		<Unit filename="drawing.h" />
 		<Unit filename="forcegauge.cpp" />
+		<Unit filename="forcegauge.h" />
+		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="main.cc" />
 		<Unit filename="map.cpp" />

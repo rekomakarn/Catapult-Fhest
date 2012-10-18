@@ -30,6 +30,11 @@ void ForceGauge::SetCurrentForce(int force)
     fCurrentForce = force;
 }
 
+void ForceGauge::Update()
+{
+
+}
+
 void ForceGauge::Draw()
 {
     glBegin(GL_QUADS);

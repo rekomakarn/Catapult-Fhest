@@ -28,7 +28,7 @@ class MyGame
         void DrawMap(SDL_Surface* screen, int minHeight, int maxHeight, int minDiff, int maxDiff, int Segments);
         void DrawMap(SDL_Surface* screen, Vector2D* Segments);
         void Run(int *argc, char** argv, int w, int h);
-        void Update();  // Added this and Draw() to get a better flow
+        void Update();
         void Draw();
 
         SDL_Surface* screen;		// The main screen everything is drawn to and then shown
@@ -48,6 +48,7 @@ class MyGame
         int mx, my;					// Mouse X and Y pos (could be Vector2D?)
         Catapult catapult;			// The main cataput instance
         Uint32 start;				// Idontknowactually
+        SDL_Event event;			// Handles SDL events eg. human input
 };
 
 #endif // GAME_H_INCLUDED

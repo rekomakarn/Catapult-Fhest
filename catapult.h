@@ -11,21 +11,22 @@
 class Catapult
 {
     public:
-        int iLength, iHeight, iRotation;
-        int iForce, iMaxForce;
-        Vector2D Position;
-        Catapult();
-        void Draw();
-        void Rotate(bool CW);
+        int iLength, iHeight;
+        int iForce, iMaxForce, iRotation;
+
+        Vector2D Position;					// Position of the cataoult model
         ForceGauge forcegauge;
-        void InitForceGauge();
+        Projectile* proj;					// The attached projectile, hopefully able to support more in the future
+
+        Catapult();
         void Update();
+        void Draw();
+
+        void Rotate(bool CW);
+        void InitForceGauge();
         void ChangeForce(int f);
 
-        Projectile* proj;
         void SpawnProjectile();
-        void DrawProjectile();
-    private:
 };
 
 #endif // CATAPULT_H_INCLUDED
