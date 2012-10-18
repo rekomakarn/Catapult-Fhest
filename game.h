@@ -35,7 +35,6 @@ class MyGame
         Vector2D vect;
         Map* map;
         AI* ai;
-        Projectile* proj;
 
         bool bRunning;				// Is the game running or not?
         bool bDebug;				// Are we running in debug mode or not?

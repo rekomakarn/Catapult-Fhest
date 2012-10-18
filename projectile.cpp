@@ -14,7 +14,7 @@ Projectile::~Projectile()
 {
     // <Particle Explosion here mofo!>
 
-    MyGame::Instance()->proj = new Projectile(MyGame::Instance()->vect, MyGame::Instance()->ai->currentForce);
+    // MyGame::Instance()->catapult.SpawnProjectile(); = new Projectile(MyGame::Instance()->vect, MyGame::Instance()->ai->currentForce);
 }
 
 Projectile::Projectile(float x, float y)

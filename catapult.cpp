@@ -6,6 +6,10 @@ Catapult::Catapult()
     Position.y = 0;
     iLength = 40;
     iHeight = 10;
+    proj = NULL;
+    iForce = 10;
+    iRotation = 45;
+    iMaxForce = 100;
 }
 
 void Catapult::InitForceGauge()
@@ -14,7 +18,13 @@ void Catapult::InitForceGauge()
     forcegauge.iWindowSize = 1600;
     forcegauge.SetSize(3);
     forcegauge.Position = Position + Vector2D(-20, -50);
-    forcegauge.fCurrentForce = 50;
+    forcegauge.fCurrentForce = iForce / iMaxForce;
+}
+
+void Catapult::ChangeForce(int f)
+{
+    iForce = f;
+    forcegauge.fCurrentForce = iForce / iMaxForce;
 }
 
 void Catapult::Rotate(bool CW)
@@ -65,4 +75,33 @@ void Catapult::Draw()
     glVertex2i(Position.x, Position.y - 20);
     glVertex2i(Position.x + 10, Position.y);
     glEnd();
+
+    DrawProjectile();
+}
+
+void Catapult::SpawnProjectile()
+{
+    Vector2D vect = Vector2D(iForce, 0);
+
+    vect = vect.Rotate(-iRotation);
+
+    proj = new Projectile(Position, vect);
+}
+
+void Catapult::Update()
+{
+    if(proj)
+        proj->UpdatePosition();
+}
+
+void Catapult::DrawProjectile()
+{
+	// Draw the projectile (if any)
+    if(proj)
+    {
+    	if(proj->bCollisionActive)
+            proj->Draw();
+        else
+            proj->Destroy();
+    }
 }

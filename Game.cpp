@@ -75,10 +75,9 @@ void MyGame::Run(int *argc, char** argv, int w, int h)
     vect = map->GenerateBase(20, 30, false);
     map->GenerateBase(200, 10, true);
 
-    // Catapult & Projectile
+    // Catapult
     catapult.Position = vect;
     catapult.InitForceGauge();
-    proj = NULL;
 
     // Catapult AI (could be under catapult really but the projectile spawning is here at the moment)
     ai = new AI();
@@ -150,7 +149,7 @@ void MyGame::Update()
                 }
                 if(event.key.keysym.sym == SDLK_p)
                 {
-                    proj = new Projectile(vect, ai->currentForce);
+                    catapult.SpawnProjectile();
                 }
                 if(event.key.keysym.sym == SDLK_PAGEUP)
                 {
@@ -162,11 +161,11 @@ void MyGame::Update()
                 }
                 if(event.key.keysym.sym == SDLK_KP_PLUS)
                 {
-                    catapult.forcegauge.SetCurrentForce(catapult.forcegauge.fCurrentForce + 10);
+                    //catapult.iForce += catapult.iMaxForce / 10;
                 }
                 if(event.key.keysym.sym == SDLK_KP_MINUS)
                 {
-                    catapult.forcegauge.SetCurrentForce(catapult.forcegauge.fCurrentForce - 10);
+                    //catapult.iForce -= catapult.iMaxForce / 10;
                 }
             break;
         }
@@ -189,9 +188,7 @@ void MyGame::Update()
 
     glColor4ub(0, 255, 0, 255);
 
-    if(proj)
-        proj->UpdatePosition();
-
+    catapult.Update();
 
     if(bFreeDraw)
     {
@@ -217,15 +214,6 @@ void MyGame::Draw()
 {
 	// Draw the Catapult
     catapult.Draw();
-
-	// Draw the projectile (if any)
-    if(proj)
-    {
-    	if(proj->bCollisionActive)
-            proj->Draw();
-        else
-            proj->Destroy();
-    }
 
     // Finally draw the whole map
     map->DrawMap(bDebug);
