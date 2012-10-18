@@ -50,7 +50,7 @@ Vector2D Vector2D::operator+=(const Vector2D& obj)
 
 Vector2D Vector2D::Rotate(float a)
 {
-    a = a * M_PI / 180;
+    // a = a * M_PI / 180;
 	float x2 = x * cosf(a) - y * sinf(a);
 	float y2 = x * sinf(a) + y * cosf(a);
 	return Vector2D(x2,y2);

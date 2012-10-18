@@ -79,7 +79,7 @@ void Projectile::CheckCollision()
         // Derp level LA. Riots incoming
         int indexPos = ceilf(Position.x / segmentDistance);
 
-        if(Position.y >= segments[indexPos].y && Position.x >= segments[indexPos].x) // Missed target, hit gound
+        if(Position.y >= segments[indexPos].y && Position.x + 3 >= segments[indexPos].x && Position.x - 3 <= segments[indexPos].x) // Missed target, hit gound
         {
             std::cout << "HIT! index=" << indexPos << "\t x=" << segments[indexPos].x << "\t y="<< segments[indexPos].y << "!" << std::endl;
             MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
