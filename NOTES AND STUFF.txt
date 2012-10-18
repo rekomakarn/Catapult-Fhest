@@ -1,0 +1,13 @@
+## Att tänka på ##
+Vector2D ska INTE vara pointer (Petri disaproves >:|)
+så "Vector2D v = Vector2D(0,0);"
+
+I DrawMap så kommenterade jag ut några rader kod i slutet som borde vara irrelevant efter att vi bytte till quads från polygoner. Bör testas dock.
+Behöver vi för övrigt vår gamla debug längre? Den funkar så bra nu att den bara gör det svårare att tyda :p
+
+#includes i headers verkar bli endless loops om man crossrefererar så vet inte hur man ska strukturera det bra :/
+
+## GOOD SEEDS ##
+-1000			Väldigt naturlig canyon!
+1349893161		Problembarns seed men visade sig va rätt nice
+5158			Flatlands

@@ -1,0 +1,26 @@
+Dt 		= Delta Time (Simplify as 1)
+A 		= Acceleration
+M 		= Mass (Simplify as 1)
+Fimp 	= Impulse
+
+A = Ftot / M
+V = A *  Dt
+V = F / m * Dt
+Ftot = F1 + F2
+
+S = V * Dt
+S = S0 + V * Dt
+
+
+
+Petri skriver sina Y:n bak och fram
+så de ser ut som x...
+
+Kan lika bra läsa boken at this point,
+hängde inte ens med från början :3
+
+Vector2D::Rotate(float a)
+{
+	x 	= x*cos(a) - y*sin(a);
+	y	= x*sin(a) + y*cos(a);
+}
