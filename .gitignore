@@ -164,8 +164,15 @@ pip-log.txt
 
 # Codeblocks things
 *.layout
+Catapult AI.layout
+Catapult AI.cbp.cbTemp
+Catapult AI.depend
 *.cbTemp
 *.cpp.cbTemp
 *.depend
 map.txt
 SDL-1.2.15/
+NOTES AND STUFF.txt
+Petris Lektion.txt
+physics.cpp.cbTemp
+SDL.dll
