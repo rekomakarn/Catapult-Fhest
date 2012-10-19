@@ -4,6 +4,7 @@
 #include "forcegauge.h"
 #include <iostream>
 #include "projectile.h"
+#include "ai.h"
 
 #ifndef CATAPULT_H_INCLUDED
 #define CATAPULT_H_INCLUDED

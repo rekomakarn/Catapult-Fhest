@@ -40,8 +40,8 @@ void Catapult::Update()
 	{
 		proj->Destroy();
 		proj = NULL;
+		SpawnProjectile();
 	}
-
 }
 
 void Catapult::Draw()
