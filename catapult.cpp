@@ -7,7 +7,7 @@ Catapult::Catapult()
     iLength = 40;
     iHeight = 10;
     proj = NULL;
-    iRotation = 45;
+    iRotation = 90;
     fMaxForce = 30;
     ChangeForce(15);
 
@@ -35,9 +35,9 @@ void Catapult::ChangeForce(int f)
     forcegauge.SetCurrentForce(fForce / fMaxForce);
 }
 
-void Catapult::Rotate(bool CW)
+void Catapult::Rotate(int angle, bool CW)
 {
-    iRotation += CW ? 1 : -1;
+    iRotation += CW ? angle : -angle;
 }
 
 void Catapult::Update()
@@ -57,15 +57,19 @@ void Catapult::Draw()
 {
     forcegauge.Draw();
 
+    if(proj)
+    	if(proj->bCollisionActive)
+            proj->Draw();
+
     Vector2D vect1 = Vector2D(-iLength / 2, -iHeight / 2);
     Vector2D vect2 = Vector2D(iLength / 2, -iHeight / 2);
     Vector2D vect3 = Vector2D(iLength / 2, iHeight / 2);
     Vector2D vect4 = Vector2D(-iLength / 2, iHeight / 2);
 
-    vect1 = vect1.Rotate(iRotation) + Position + Vector2D(0, - iHeight / 2);
-    vect2 = vect2.Rotate(iRotation) + Position + Vector2D(0, - iHeight / 2);
-    vect3 = vect3.Rotate(iRotation) + Position + Vector2D(0, - iHeight / 2);
-    vect4 = vect4.Rotate(iRotation) + Position + Vector2D(0, - iHeight / 2);
+    vect1 = vect1.Rotate(-iRotation) + Position + Vector2D(0, - iHeight / 2);
+    vect2 = vect2.Rotate(-iRotation) + Position + Vector2D(0, - iHeight / 2);
+    vect3 = vect3.Rotate(-iRotation) + Position + Vector2D(0, - iHeight / 2);
+    vect4 = vect4.Rotate(-iRotation) + Position + Vector2D(0, - iHeight / 2);
 
     glBegin(GL_QUADS);
     glColor4ub(90, 90, 90, 255);
@@ -96,10 +100,6 @@ void Catapult::Draw()
     glVertex2i(Position.x, Position.y - 20);
     glVertex2i(Position.x + 10, Position.y);
     glEnd();
-
-    if(proj)
-    	if(proj->bCollisionActive)
-            proj->Draw();
 }
 
 void Catapult::SpawnProjectile()

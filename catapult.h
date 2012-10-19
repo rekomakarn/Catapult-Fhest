@@ -24,7 +24,7 @@ class Catapult
         void Update();
         void Draw();
 
-        void Rotate(bool CW);
+        void Rotate(int angle,bool CW);
         void InitForceGauge();
         void ChangeForce(int f);
 

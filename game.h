@@ -8,6 +8,7 @@
 #include "particles.h"
 #include <iostream>
 #include "math.h"
+#include "cloud.h"
 
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
@@ -33,6 +34,7 @@ class MyGame
 
         SDL_Surface* screen;		// The main screen everything is drawn to and then shown
         Vector2D vect;
+        //Vector2D** ProjectileLines;
         Map* map;
         AI* ai;
 

@@ -80,6 +80,10 @@ void MyGame::Run(int *argc, char** argv, int w, int h)
     catapult.Position = vect;
     catapult.InitForceGauge();
 
+    //ProjectileLines = new Vector2D[10][];
+
+    //ProjectileLines[0][0] = NULL;
+
     // Test Particle
     part = new Particles();
 
@@ -151,11 +155,11 @@ void MyGame::Update()
                 }
                 if(event.key.keysym.sym == SDLK_PAGEUP)
                 {
-                    catapult.Rotate(false);
+                    catapult.Rotate(5, false);
                 }
                 if(event.key.keysym.sym == SDLK_PAGEDOWN)
                 {
-                    catapult.Rotate(true);
+                    catapult.Rotate(5, true);
                 }
                 if(event.key.keysym.sym == SDLK_KP_PLUS)
                 {
@@ -214,7 +218,15 @@ void MyGame::Update()
  */
 void MyGame::Draw()
 {
-	// Draw the Catapult
+    glBegin(GL_QUADS);
+    glColor4ub(255, 50, 0, 255);
+    glVertex2i(0, MAP_HEIGHT);
+    glVertex2i(MAP_WIDTH, MAP_HEIGHT);
+    glColor4ub(17, 150, 255, 255);
+    glVertex2i(MAP_WIDTH, 0);
+    glVertex2i(0, 0);
+    glEnd();
+
     catapult.Draw();
 
     // Finally draw the whole map

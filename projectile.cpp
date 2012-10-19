@@ -34,6 +34,11 @@ Projectile::Projectile(Vector2D &vect, Vector2D &force)
     Position = vect;
     MoveVector.x = force.x;
     MoveVector.y = force.y;
+    iRotationSpeed = force.x / 2;
+    iLineAmount = 1;
+    iLineIndex = 1;
+    LinePoints = new Vector2D[100];
+    LinePoints[0] = Position;
 }
 
 Projectile::Projectile(float mass)
@@ -54,12 +59,20 @@ void Projectile::Update()
 {
     Physics::Instance()->ApplyGravity(MoveVector);
 
-    iRotation++;
+    iRotation += iRotationSpeed;
     if(iRotation > 360)
         iRotation = 0;
 
     Position.x += MoveVector.x;//  += MoveVector;
     Position.y += MoveVector.y;
+
+    iLineIndex++;
+    if(iLineIndex > 2)
+    {
+        LinePoints[iLineAmount] = Position;
+        iLineAmount++;
+        iLineIndex = 0;
+    }
 
     CheckCollision();
 }
@@ -77,7 +90,7 @@ void Projectile::CheckCollision()
         // Derp level LA. Riots incoming
         int indexPos = ceilf(Position.x / segmentDistance);
 
-        if(Position.y >= segments[indexPos].y && Position.x + 3 >= segments[indexPos].x && Position.x - 3 <= segments[indexPos].x) // Missed target, hit gound
+        if(Position.y >= segments[indexPos].y && Position.x + 5 >= segments[indexPos].x && Position.x - 5 <= segments[indexPos].x) // Missed target, hit gound
         {
             std::cout << "Projectile::CheckCollision(): HIT! index=" << indexPos << "\t x=" << segments[indexPos].x << "\t y="<< segments[indexPos].y << "!" << std::endl;
             //MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
@@ -89,6 +102,11 @@ void Projectile::CheckCollision()
             //MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
             bCollisionActive = false;
         }
+        else if(Position.x < 0)
+        {
+            std::cout <<"Projectile::CheckCollision(): Projectile went outside the map to the left!" << std::endl;
+            bCollisionActive = false;
+        }
         else if(Position.y) // Out of bounds horizontally
         {
         }
@@ -97,6 +115,19 @@ void Projectile::CheckCollision()
 
 void Projectile::Draw()
 {
+    for(int i = 1; i < iLineAmount; i++)
+    {
+        if(i % 2)
+        {
+            glBegin(GL_LINES);
+            glColor4ub(255, 255, 255, 255);
+            glVertex2i(LinePoints[i].x, LinePoints[i].y);
+            glVertex2i(LinePoints[i - 1].x, LinePoints[i - 1].y);
+            glEnd();
+        }
+
+    }
+
     if(bCollisionActive)
     {
         glBegin(GL_QUADS);

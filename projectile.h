@@ -13,7 +13,7 @@
 class Projectile
 {
     public:
-        int iRotation;
+        int iRotation, iRotationSpeed;
         float fMass;
         float fSize;
         Vector2D Position;
@@ -31,6 +31,9 @@ class Projectile
         void CheckCollision();
         void Draw();
         void Destroy();
+
+        int iLineIndex, iLineAmount;
+        Vector2D* LinePoints;
 };
 
 #endif // PROJECTILE_H_INCLUDED
