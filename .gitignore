@@ -163,5 +163,8 @@ pip-log.txt
 .DS_Store
 
 # Codeblocks things
-.layout
-.cbTemp
+*.layout
+*.cbTemp
+*.cpp.cbTemp
+*.depend
+map.txt

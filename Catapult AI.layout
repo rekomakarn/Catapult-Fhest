@@ -20,16 +20,16 @@
 		<Cursor position="132" topLine="0" />
 	</File>
 	<File name="forcegauge.cpp" open="1" top="0" tabpos="9">
-		<Cursor position="381" topLine="7" />
+		<Cursor position="381" topLine="0" />
 	</File>
 	<File name="forcegauge.h" open="1" top="0" tabpos="10">
 		<Cursor position="401" topLine="0" />
 	</File>
 	<File name="game.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="3789" topLine="120" />
+		<Cursor position="3402" topLine="146" />
 	</File>
 	<File name="game.h" open="1" top="0" tabpos="2">
-		<Cursor position="1286" topLine="7" />
+		<Cursor position="1286" topLine="2" />
 	</File>
 	<File name="main.cc" open="0" top="0" tabpos="3">
 		<Cursor position="166" topLine="0" />
@@ -53,7 +53,7 @@
 		<Cursor position="635" topLine="0" />
 	</File>
 	<File name="projectile.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="1167" topLine="9" />
+		<Cursor position="1167" topLine="31" />
 	</File>
 	<File name="projectile.h" open="1" top="0" tabpos="8">
 		<Cursor position="791" topLine="0" />

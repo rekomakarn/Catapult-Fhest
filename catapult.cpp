@@ -39,6 +39,7 @@ void Catapult::Update()
 	{
 		proj->Destroy();
 		proj = NULL;
+		SpawnProjectile();
 	}
 }
 

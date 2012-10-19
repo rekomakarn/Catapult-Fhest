@@ -442,10 +442,10 @@
 1350488574 source:c:\users\laemon\dropbox\catapult ai\forcegauge.cpp
 	"forcegauge.h"
 
-1350640677 source:c:\users\oliver\catapult-fhest\game.cpp
+1350642065 source:c:\users\oliver\catapult-fhest\game.cpp
 	"game.h"
 
-1350636780 c:\users\oliver\catapult-fhest\game.h
+1350642091 c:\users\oliver\catapult-fhest\game.h
 	"SDL/SDL.h"
 	"SDL/SDL_opengl.h"
 	"vector2D.h"
@@ -480,15 +480,16 @@
 	"vector2D.h"
 	<cstddef>
 
-1350641252 c:\users\oliver\catapult-fhest\catapult.h
+1350642091 c:\users\oliver\catapult-fhest\catapult.h
 	"vector2D.h"
 	"SDL/SDL.h"
 	"SDL/SDL_opengl.h"
 	"forcegauge.h"
 	<iostream>
 	"projectile.h"
+	"ai.h"
 
-1350641252 c:\users\oliver\catapult-fhest\forcegauge.h
+1350642064 c:\users\oliver\catapult-fhest\forcegauge.h
 	"vector2D.h"
 	"SDL/SDL_opengl.h"
 
@@ -504,7 +505,7 @@
 	"projectile.h"
 	<iostream>
 
-1350640975 source:c:\users\oliver\catapult-fhest\catapult.cpp
+1350642091 source:c:\users\oliver\catapult-fhest\catapult.cpp
 	"catapult.h"
 
 1349959327 source:c:\users\oliver\catapult-fhest\drawing.cpp
@@ -518,7 +519,7 @@
 	"SDL/SDL.h"
 	"vector2D.h"
 
-1350640803 source:c:\users\oliver\catapult-fhest\forcegauge.cpp
+1350642065 source:c:\users\oliver\catapult-fhest\forcegauge.cpp
 	"forcegauge.h"
 
 1349389508 source:c:\users\oliver\catapult-fhest\main.cc
@@ -541,7 +542,7 @@
 1350572937 source:c:\users\oliver\catapult-fhest\physics.cpp
 	"physics.h"
 
-1350636780 source:c:\users\oliver\catapult-fhest\projectile.cpp
+1350642091 source:c:\users\oliver\catapult-fhest\projectile.cpp
 	"projectile.h"
 	"game.h"
 
@@ -550,10 +551,10 @@
 	"math.h"
 	<iostream>
 
-1350584793 source:c:\users\laemon\documents\github\catapult-fhest\game.cpp
+1350640949 source:c:\users\laemon\documents\github\catapult-fhest\game.cpp
 	"game.h"
 
-1350584494 c:\users\laemon\documents\github\catapult-fhest\game.h
+1350640412 c:\users\laemon\documents\github\catapult-fhest\game.h
 	"SDL/SDL.h"
 	"SDL/SDL_opengl.h"
 	"vector2D.h"
@@ -565,16 +566,16 @@
 	<iostream>
 	"math.h"
 
-1350585065 c:\users\laemon\documents\github\catapult-fhest\vector2d.h
+1350565797 c:\users\laemon\documents\github\catapult-fhest\vector2d.h
 
-1350585065 c:\users\laemon\documents\github\catapult-fhest\map.h
+1350565797 c:\users\laemon\documents\github\catapult-fhest\map.h
 	"SDL/SDL.h"
 	"vector2D.h"
 
-1350585065 c:\users\laemon\documents\github\catapult-fhest\ai.h
+1350565797 c:\users\laemon\documents\github\catapult-fhest\ai.h
 	"vector2D.h"
 
-1350584494 c:\users\laemon\documents\github\catapult-fhest\projectile.h
+1350638532 c:\users\laemon\documents\github\catapult-fhest\projectile.h
 	"vector2D.h"
 	"physics.h"
 	<iostream>
@@ -584,55 +585,56 @@
 	"physics.h"
 	"math.h"
 
-1350585065 c:\users\laemon\documents\github\catapult-fhest\physics.h
+1350565797 c:\users\laemon\documents\github\catapult-fhest\physics.h
 	"vector2D.h"
 	<cstddef>
 
-1350584494 c:\users\laemon\documents\github\catapult-fhest\catapult.h
+1350640927 c:\users\laemon\documents\github\catapult-fhest\catapult.h
 	"vector2D.h"
 	"SDL/SDL.h"
 	"SDL/SDL_opengl.h"
 	"forcegauge.h"
 	<iostream>
 	"projectile.h"
+	"ai.h"
 
-1350584827 c:\users\laemon\documents\github\catapult-fhest\forcegauge.h
+1350638532 c:\users\laemon\documents\github\catapult-fhest\forcegauge.h
 	"vector2D.h"
 	"SDL/SDL_opengl.h"
 
-1350585065 c:\users\laemon\documents\github\catapult-fhest\particles.h
+1350565797 c:\users\laemon\documents\github\catapult-fhest\particles.h
 	"vector2D.h"
 	"SDL/SDL.h"
 	"SDL/SDL_opengl.h"
 	<iostream>
 
-1350585065 source:c:\users\laemon\documents\github\catapult-fhest\ai.cpp
+1350565797 source:c:\users\laemon\documents\github\catapult-fhest\ai.cpp
 	"ai.h"
 	"game.h"
 	"projectile.h"
 	<iostream>
 
-1350584494 source:c:\users\laemon\documents\github\catapult-fhest\catapult.cpp
+1350641753 source:c:\users\laemon\documents\github\catapult-fhest\catapult.cpp
 	"catapult.h"
 
-1350585065 source:c:\users\laemon\documents\github\catapult-fhest\drawing.cpp
+1350565797 source:c:\users\laemon\documents\github\catapult-fhest\drawing.cpp
 	"drawing.h"
 	<cstddef>
 	"SDL/SDL.h"
 	"math.h"
 	"vector2D.h"
 
-1350585065 c:\users\laemon\documents\github\catapult-fhest\drawing.h
+1350565797 c:\users\laemon\documents\github\catapult-fhest\drawing.h
 	"SDL/SDL.h"
 	"vector2D.h"
 
-1350584494 source:c:\users\laemon\documents\github\catapult-fhest\forcegauge.cpp
+1350638532 source:c:\users\laemon\documents\github\catapult-fhest\forcegauge.cpp
 	"forcegauge.h"
 
-1350585065 source:c:\users\laemon\documents\github\catapult-fhest\main.cc
+1350565797 source:c:\users\laemon\documents\github\catapult-fhest\main.cc
 	"game.h"
 
-1350585065 source:c:\users\laemon\documents\github\catapult-fhest\map.cpp
+1350565797 source:c:\users\laemon\documents\github\catapult-fhest\map.cpp
 	"map.h"
 	"math.h"
 	<iostream>
@@ -643,17 +645,17 @@
 	<time.h>
 	"game.h"
 
-1350577093 source:c:\users\laemon\documents\github\catapult-fhest\particles.cpp
+1350565797 source:c:\users\laemon\documents\github\catapult-fhest\particles.cpp
 	"particles.h"
 
-1350585065 source:c:\users\laemon\documents\github\catapult-fhest\physics.cpp
+1350565797 source:c:\users\laemon\documents\github\catapult-fhest\physics.cpp
 	"physics.h"
 
-1350584001 source:c:\users\laemon\documents\github\catapult-fhest\projectile.cpp
+1350640792 source:c:\users\laemon\documents\github\catapult-fhest\projectile.cpp
 	"projectile.h"
 	"game.h"
 
-1350577093 source:c:\users\laemon\documents\github\catapult-fhest\vector2d.cpp
+1350570139 source:c:\users\laemon\documents\github\catapult-fhest\vector2d.cpp
 	"vector2D.h"
 	"math.h"
 	<iostream>

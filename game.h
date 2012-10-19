@@ -38,7 +38,7 @@ class MyGame
 
         bool bRunning;				// Is the game running or not?
         bool bDebug;				// Are we running in debug mode or not?
-
+        Catapult catapult;			// The main cataput instance
         Particles* part;			// Random test particles
 
     private:
@@ -46,7 +46,6 @@ class MyGame
         MyGame(void);
 
         int mx, my;					// Mouse X and Y pos (could be Vector2D?)
-        Catapult catapult;			// The main cataput instance
         Uint32 start;				// Idontknowactually
         SDL_Event event;			// Handles SDL events eg. human input
 };
