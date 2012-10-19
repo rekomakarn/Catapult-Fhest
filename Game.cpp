@@ -161,11 +161,15 @@ void MyGame::Update()
                 }
                 if(event.key.keysym.sym == SDLK_KP_PLUS)
                 {
-                    //catapult.iForce += catapult.iMaxForce / 10;
+                    catapult.ChangeForce(catapult.fForce + catapult.fMaxForce / 10);
                 }
                 if(event.key.keysym.sym == SDLK_KP_MINUS)
                 {
-                    //catapult.iForce -= catapult.iMaxForce / 10;
+                    catapult.ChangeForce(catapult.fForce - catapult.fMaxForce / 10);
+                }
+                if(event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    SDL_Quit();
                 }
             break;
         }

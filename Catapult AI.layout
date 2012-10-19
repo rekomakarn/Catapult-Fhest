@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="ai.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="411" topLine="0" />
+	<File name="ai.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="578" topLine="0" />
 	</File>
 	<File name="ai.h" open="0" top="0" tabpos="11">
 		<Cursor position="269" topLine="0" />
 	</File>
-	<File name="catapult.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="1698" topLine="60" />
+	<File name="catapult.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="306" topLine="0" />
 	</File>
-	<File name="catapult.h" open="1" top="0" tabpos="5">
-		<Cursor position="517" topLine="0" />
+	<File name="catapult.h" open="1" top="0" tabpos="6">
+		<Cursor position="316" topLine="0" />
 	</File>
 	<File name="drawing.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="22" topLine="0" />
@@ -19,25 +19,25 @@
 	<File name="drawing.h" open="0" top="0" tabpos="8">
 		<Cursor position="132" topLine="0" />
 	</File>
-	<File name="forcegauge.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="540" topLine="0" />
+	<File name="forcegauge.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="381" topLine="7" />
 	</File>
-	<File name="forcegauge.h" open="1" top="0" tabpos="9">
-		<Cursor position="495" topLine="0" />
+	<File name="forcegauge.h" open="1" top="0" tabpos="10">
+		<Cursor position="401" topLine="0" />
 	</File>
-	<File name="game.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="4747" topLine="143" />
+	<File name="game.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="3789" topLine="120" />
 	</File>
-	<File name="game.h" open="1" top="0" tabpos="1">
+	<File name="game.h" open="1" top="0" tabpos="2">
 		<Cursor position="1286" topLine="7" />
 	</File>
 	<File name="main.cc" open="0" top="0" tabpos="3">
 		<Cursor position="166" topLine="0" />
 	</File>
-	<File name="map.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="5754" topLine="78" />
+	<File name="map.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="4752" topLine="168" />
 	</File>
-	<File name="map.h" open="1" top="0" tabpos="3">
+	<File name="map.h" open="1" top="0" tabpos="4">
 		<Cursor position="1058" topLine="0" />
 	</File>
 	<File name="particles.cpp" open="0" top="0" tabpos="12">
@@ -52,10 +52,10 @@
 	<File name="physics.h" open="0" top="0" tabpos="9">
 		<Cursor position="635" topLine="0" />
 	</File>
-	<File name="projectile.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="3503" topLine="84" />
+	<File name="projectile.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="1167" topLine="9" />
 	</File>
-	<File name="projectile.h" open="1" top="0" tabpos="7">
+	<File name="projectile.h" open="1" top="0" tabpos="8">
 		<Cursor position="791" topLine="0" />
 	</File>
 	<File name="vector2D.cpp" open="0" top="0" tabpos="13">

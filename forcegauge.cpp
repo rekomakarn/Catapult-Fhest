@@ -22,12 +22,12 @@ void ForceGauge::SetSize(int size)
     fGaugeSize = ((iWindowSize / 100) * size);
 }
 
-void ForceGauge::SetCurrentForce(int force)
+void ForceGauge::SetCurrentForce(float force)
 {
     force = force > 100 ? 100 : force;
     force = force < 0 ? 0 : force;
 
-    fCurrentForce = force;
+    fCurrentForce = force * 100;
 }
 
 void ForceGauge::Update()

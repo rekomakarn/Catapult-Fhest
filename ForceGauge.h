@@ -17,7 +17,7 @@ class ForceGauge
 
         void Draw();
         void Update();
-        void SetCurrentForce(int force);
+        void SetCurrentForce(float force);
         void SetSize();
         void SetSize(int size);
     private:

@@ -7,9 +7,9 @@ Catapult::Catapult()
     iLength = 40;
     iHeight = 10;
     proj = NULL;
-    iForce = 10;
     iRotation = 45;
-    iMaxForce = 100;
+    fMaxForce = 30;
+    ChangeForce(15);
 }
 
 void Catapult::InitForceGauge()
@@ -18,13 +18,12 @@ void Catapult::InitForceGauge()
     forcegauge.iWindowSize = 1600;
     forcegauge.SetSize(3);
     forcegauge.Position = Position + Vector2D(-20, -50);
-    forcegauge.fCurrentForce = iForce / iMaxForce;
 }
 
 void Catapult::ChangeForce(int f)
 {
-    iForce = f;
-    forcegauge.fCurrentForce = iForce / iMaxForce;
+    fForce = f;
+    forcegauge.SetCurrentForce(fForce / fMaxForce);
 }
 
 void Catapult::Rotate(bool CW)
@@ -41,7 +40,6 @@ void Catapult::Update()
 		proj->Destroy();
 		proj = NULL;
 	}
-
 }
 
 void Catapult::Draw()
@@ -95,13 +93,13 @@ void Catapult::Draw()
 
 void Catapult::SpawnProjectile()
 {
-	if(proj)										// If there allready is a projectile active
+	if(proj)										// If there already is a projectile active
 	{
 		proj->Destroy();							// then destroy it before creating a new one
 		proj = NULL;
 	}
 
-    Vector2D vect = Vector2D(iForce, 0);
+    Vector2D vect = Vector2D(fForce, 0);
     vect = vect.Rotate(-iRotation);
     proj = new Projectile(Position, vect);
 }

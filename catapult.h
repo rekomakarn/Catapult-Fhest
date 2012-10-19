@@ -12,7 +12,8 @@ class Catapult
 {
     public:
         int iLength, iHeight;
-        int iForce, iMaxForce, iRotation;
+        float fForce, fMaxForce;
+        int iRotation;
 
         Vector2D Position;					// Position of the cataoult model
         ForceGauge forcegauge;
