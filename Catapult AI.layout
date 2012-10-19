@@ -7,8 +7,8 @@
 	<File name="ai.h" open="0" top="0" tabpos="11">
 		<Cursor position="269" topLine="0" />
 	</File>
-	<File name="catapult.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="306" topLine="0" />
+	<File name="catapult.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="516" topLine="47" />
 	</File>
 	<File name="catapult.h" open="1" top="0" tabpos="6">
 		<Cursor position="316" topLine="0" />
@@ -25,8 +25,8 @@
 	<File name="forcegauge.h" open="1" top="0" tabpos="10">
 		<Cursor position="401" topLine="0" />
 	</File>
-	<File name="game.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="3402" topLine="146" />
+	<File name="game.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="4166" topLine="137" />
 	</File>
 	<File name="game.h" open="1" top="0" tabpos="2">
 		<Cursor position="1286" topLine="2" />
@@ -35,7 +35,7 @@
 		<Cursor position="166" topLine="0" />
 	</File>
 	<File name="map.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="4752" topLine="168" />
+		<Cursor position="6034" topLine="20" />
 	</File>
 	<File name="map.h" open="1" top="0" tabpos="4">
 		<Cursor position="1058" topLine="0" />
@@ -53,7 +53,7 @@
 		<Cursor position="635" topLine="0" />
 	</File>
 	<File name="projectile.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="1167" topLine="31" />
+		<Cursor position="1014" topLine="0" />
 	</File>
 	<File name="projectile.h" open="1" top="0" tabpos="8">
 		<Cursor position="791" topLine="0" />

@@ -22,7 +22,13 @@ void Catapult::InitForceGauge()
 
 void Catapult::ChangeForce(int f)
 {
-    fForce = f;
+    if(f < fMaxForce && f > 0)
+        fForce = f;
+    else if(f >= fMaxForce)
+        fForce = fMaxForce;
+    else if(f <= 0)
+        fForce = 0;
+
     forcegauge.SetCurrentForce(fForce / fMaxForce);
 }
 

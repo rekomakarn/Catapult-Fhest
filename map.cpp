@@ -193,11 +193,4 @@ void Map::FreeDrawBase(int baseEntry, int baseLength)
 
 void Map::SaveMap(void)
 {
-    std::ofstream mapFile("map.txt", std::ios::binary);
-
-    for(int i = 0; i < SegmentCount; i++)
-    {
-        mapFile << "[" << i << "]" << " x:" << Segments[i].x << " y:" << Segments[i].y << "\n";
-    }
-    mapFile.close();
 }

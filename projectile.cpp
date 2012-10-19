@@ -83,6 +83,12 @@ void Projectile::CheckCollision()
             MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
             bCollisionActive = false;
         }
+        else if(Position.x > MyGame::MAP_WIDTH)
+        {
+            std::cout << "Projectile went outside the map to the right!" << std::endl;
+            MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
+            bCollisionActive = false;
+        }
         else if(Position.y) // Out of bounds horizontally
         {
         }
