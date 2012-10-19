@@ -5,43 +5,43 @@
 
 AI::AI()
 {
-    currentForce = Vector2D(5, -10);
-    baseIndex = MyGame::Instance()->map->GoalIndexRange;
+    /*if(MyGame::Instance())
+        std::cout << "AI::AI() MyGame instance found!" << std::endl;
+        //baseIndex = MyGame::Instance()->map->GoalIndexRange;
+    else
+        std::cout << "AI::AI() map in MyGame instance not found!" << std::endl;*/
+
     currentIndex = -1;
-    lastVector = Vector2D(0, 0);
+
+    currentForce = 0.0f;
+    currentAngle = 0;
+
+    lastForce = 0.0f;
+    lastAngle = 0;
 };
+
+AI::~AI()
+{
+
+}
 
 void AI::DecideNewForce(int currentIndex, Vector2D currentVector)
 {
-    this->currentIndex = currentIndex;
-    this->currentVector = currentVector;
+    //this->currentIndex = currentIndex;
+    /*this->currentVector = currentVector;
 
-    yIncrease, xIncrease = 0;
-
-    if(lastVector.y < currentVector.y)
-    {
-        yIncrease = -1;
-    } else yIncrease = 5;
-
-    // Calculate X and Y increase
-    this->lastVector = lastVector;
-
-    std::cout << "currentIndex: " << currentIndex << std::endl;
-    std::cout << "baseIndex.x: " << baseIndex.x << std::endl;
-    std::cout << "baseIndex.y: " << baseIndex.y << std::endl;
-
-    this->lastVector = lastVector;
+    forceIncrease, angleIncrease = 0;
 
     if(currentIndex < baseIndex.x) // Increase
     {
-        currentForce = currentForce + Vector2D(3, yIncrease);
+        // Increase force here
     }
     else if(currentIndex > baseIndex.y) // Decrease
     {
-        currentForce = currentForce - Vector2D(1, yIncrease);
+        // Decrease force here
     }
-    else
+    else // It hit the target!
     {
         std::cout << "HIT GOAL AT: " << currentIndex << std::endl;
-    }
+    }*/
 }

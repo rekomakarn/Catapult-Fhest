@@ -6,18 +6,23 @@
 class AI
 {
     public:
-        Vector2D currentForce;
-        Vector2D baseIndex;
-
-        int currentIndex;
-        Vector2D currentVector;
-        Vector2D lastVector;
-
         AI();
+        ~AI();
+
+        Vector2D baseIndex;
+        int currentIndex;
+
+        int currentAngle;
+        float currentForce;
+
+        int lastAngle;
+        float lastForce;
+
         void DecideNewForce(int currentIndex, Vector2D currentVector);
 
     private:
-        float yIncrease, xIncrease;
+        float forceIncrease;
+        float angleIncrease;
 };
 
 #endif // AI_H_INCLUDED

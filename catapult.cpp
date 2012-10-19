@@ -10,6 +10,9 @@ Catapult::Catapult()
     iRotation = 45;
     fMaxForce = 30;
     ChangeForce(15);
+
+    // Instantiate the AI
+    ai = new AI();
 }
 
 void Catapult::InitForceGauge()
@@ -45,6 +48,7 @@ void Catapult::Update()
 	{
 		proj->Destroy();
 		proj = NULL;
+
 		SpawnProjectile();
 	}
 }

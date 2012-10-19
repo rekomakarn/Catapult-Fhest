@@ -11,6 +11,7 @@
 Map::Map(SDL_Surface* screen, int SegmentCount)
 {
     Map::GenerateMap(screen, SegmentCount, MyGame::MAP_HEIGHT, MyGame::MAP_HEIGHT / 2, 20);
+    GoalIndexRange = Vector2D(0,0);
 }
 
 void Map::GenerateMap(SDL_Surface* screen, int subSegments, int minHeight, int maxHeight, int diff, int seed)

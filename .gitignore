@@ -166,6 +166,7 @@ pip-log.txt
 *.layout
 Catapult AI.layout
 Catapult AI.cbp.cbTemp
+Catapult AI.cbp
 Catapult AI.depend
 *.cbTemp
 *.cpp.cbTemp
@@ -176,3 +177,4 @@ NOTES AND STUFF.txt
 Petris Lektion.txt
 physics.cpp.cbTemp
 SDL.dll
+.dropbox

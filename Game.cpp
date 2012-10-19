@@ -76,11 +76,9 @@ void MyGame::Run(int *argc, char** argv, int w, int h)
     map->GenerateBase(200, 10, true);
 
     // Catapult
+    catapult = Catapult();
     catapult.Position = vect;
     catapult.InitForceGauge();
-
-    // Catapult AI (could be under catapult really but the projectile spawning is here at the moment)
-    ai = new AI();
 
     // Test Particle
     part = new Particles();

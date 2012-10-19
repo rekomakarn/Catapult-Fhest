@@ -79,14 +79,14 @@ void Projectile::CheckCollision()
 
         if(Position.y >= segments[indexPos].y && Position.x + 3 >= segments[indexPos].x && Position.x - 3 <= segments[indexPos].x) // Missed target, hit gound
         {
-            std::cout << "HIT! index=" << indexPos << "\t x=" << segments[indexPos].x << "\t y="<< segments[indexPos].y << "!" << std::endl;
-            MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
+            std::cout << "Projectile::CheckCollision(): HIT! index=" << indexPos << "\t x=" << segments[indexPos].x << "\t y="<< segments[indexPos].y << "!" << std::endl;
+            //MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
             bCollisionActive = false;
         }
         else if(Position.x > MyGame::MAP_WIDTH)
         {
-            std::cout << "Projectile went outside the map to the right!" << std::endl;
-            MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
+            std::cout << "Projectile::CheckCollision(): Projectile went outside the map to the right!" << std::endl;
+            //MyGame::Instance()->ai->DecideNewForce(indexPos, Vector2D(segments[indexPos].x, segments[indexPos].y));
             bCollisionActive = false;
         }
         else if(Position.y) // Out of bounds horizontally

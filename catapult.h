@@ -29,6 +29,8 @@ class Catapult
         void ChangeForce(int f);
 
         void SpawnProjectile();
+
+        AI* ai;
 };
 
 #endif // CATAPULT_H_INCLUDED
