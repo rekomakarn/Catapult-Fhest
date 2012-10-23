@@ -1,8 +1,8 @@
-#include "vector2D.h"
-#include <cstddef>
-
 #ifndef PHYSICS_H_INCLUDED
 #define PHYSICS_H_INCLUDED
+
+#include "vector2D.h"
+#include <cstddef>
 
 class Physics
 {

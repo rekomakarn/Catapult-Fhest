@@ -1,17 +1,18 @@
+#ifndef GAME_H_INCLUDED
+#define GAME_H_INCLUDED
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_opengl.h"
 #include <iostream>
 #include "math.h"
-
 #include "vector2D.h"
 #include "map.h"
 #include "ai.h"
-#include "projectile.h"
-#include "catapult.h"
 #include "particles.h"
+#include "catapult.h"
+#include "projectile.h"
 
-#ifndef GAME_H_INCLUDED
-#define GAME_H_INCLUDED
+class Catapult;
 
 class MyGame
 {
@@ -33,8 +34,8 @@ class MyGame
 
         bool bRunning;				// Is the game running or not?
         bool bDebug;				// Are we running in debug mode or not?
-        Catapult catapult;			// The main cataput instance
         Particles* part;			// Random test particles
+        Catapult* catapult;			// The main cataput instance
 
     private:
         static MyGame* m_instance;

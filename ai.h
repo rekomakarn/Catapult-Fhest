@@ -1,8 +1,8 @@
-#include "vector2D.h"
-#include "collisiondata.h"
-
 #ifndef AI_H_INCLUDED
 #define AI_H_INCLUDED
+
+#include "vector2D.h"
+#include "collisiondata.h"
 
 class AI
 {
