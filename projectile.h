@@ -1,11 +1,13 @@
-#include "vector2D.h"
-#include "physics.h"
-#include <iostream>
 #include "SDL/SDL.h"
 #include "SDL/SDL_opengl.h"
+#include <iostream>
+#include "math.h"
+
+#include "vector2D.h"
+#include "physics.h"
 #include "map.h"
 #include "physics.h"
-#include "math.h"
+#include "collisiondata.h"
 
 #ifndef PROJECTILE_H_INCLUDED
 #define PROJECTILE_H_INCLUDED
@@ -13,27 +15,26 @@
 class Projectile
 {
     public:
-        int iRotation, iRotationSpeed;
-        float fMass;
-        float fSize;
-        Vector2D Position;
-        Vector2D MoveVector;
-        bool bCollisionActive;
+        int iRotation, iRotationSpeed;              // The speed at which the projectile rotates.
+        float fMass;                                // The mass of the projectile. Currently not used.
+        float fSize;                                // The visual size of the projectile.
+        Vector2D Position;                          // The current position of the projectile.
+        Vector2D MoveVector;                        // The current force the projectile has.
+        bool bCollisionActive;                      // Is the projectile active, or should it be destroyed?
 
-        Projectile();
-        ~Projectile();                                      // Destructor
-        Projectile(float x, float y);
-        Projectile(Vector2D &vect, Vector2D &force);
-        Projectile(float mass);
-        Projectile(float x, float y, float mass);
+        Projectile();                               // Constructor.
+        ~Projectile();                              // Destructor.
+        Projectile(Vector2D &vect, Vector2D &force);// Main constructor.
 
-        void Update();
-        void CheckCollision();
-        void Draw();
-        void Destroy();
+        void Update();                              // Updates the projectile and it's components.
+        void CheckCollision();                      // Checks for collision.
+        void Draw();                                // Draws the projectile onto the screen
+        void Destroy();                             // Calls the destructor.
 
-        int iLineIndex, iLineAmount;
-        Vector2D* LinePoints;
+        int iLineIndex, iLineAmount;                // Sets the amount of lines, as well as which one to draw next.
+        Vector2D* LinePoints;                       // Saves the points between which the lines are drawn.
+
+        CollisionData* colData;                     // The object where the collisions data is stored.
 };
 
 #endif // PROJECTILE_H_INCLUDED

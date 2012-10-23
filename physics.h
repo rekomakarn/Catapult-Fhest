@@ -7,18 +7,17 @@
 class Physics
 {
     public:
-        // Det va const som är lite konstigt syntax, därför du fick status 3
-        const static float GRAVITY, TERMINAL_VELOCITY, AIR_RES;
+        const static float GRAVITY, TERMINAL_VELOCITY, AIR_RES; // Sets the core physics values.
 
         // Class related function
-        static Physics* Instance();     // Calling the instance
+        static Physics* Instance();         // Calling the instance
 
-        void ApplyGravity(Vector2D &obj);
+        void ApplyGravity(Vector2D &obj);   // Applies gravity to a vector.
 
     private:
         // Class related function
-        Physics(void);                  // Private constructor
-        static Physics* pInstance;      // The instance
+        Physics(void);                      // Private constructor
+        static Physics* pInstance;          // The instance
 };
 
 #endif // PHYSICS_H_INCLUDED

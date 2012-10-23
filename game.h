@@ -1,14 +1,14 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_opengl.h"
+#include <iostream>
+#include "math.h"
+
 #include "vector2D.h"
 #include "map.h"
 #include "ai.h"
 #include "projectile.h"
 #include "catapult.h"
 #include "particles.h"
-#include <iostream>
-#include "math.h"
-#include "cloud.h"
 
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
@@ -16,27 +16,20 @@
 class MyGame
 {
     public:
-        static MyGame* Instance(void);
+        static MyGame* Instance(void);  //Static instance to make the game available to all objects
         ~MyGame(void);
-        static const int MAP_WIDTH = 1600, MAP_HEIGHT = 900;
-        static const int FPS = 60;
-        void SwapValues(int &a, int &b);
-        void SwapCoordinates(Vector2D &obj);
-        void DrawPixel(SDL_Surface* screen, int x, int y);
-        void DrawPixel(SDL_Surface* screen, Vector2D* position);
-        void DrawLine(SDL_Surface* screen, Vector2D* position1, Vector2D* position2);
-        void DrawLine(SDL_Surface* screen, Vector2D& position1, Vector2D& position2);
-        void DrawMap(SDL_Surface* screen, int minHeight, int maxHeight, int minDiff, int maxDiff, int Segments);
-        void DrawMap(SDL_Surface* screen, Vector2D* Segments);
-        void Run(int *argc, char** argv, int w, int h);
-        void Update();
-        void Draw();
 
-        SDL_Surface* screen;		// The main screen everything is drawn to and then shown
-        Vector2D vect;
-        //Vector2D** ProjectileLines;
-        Map* map;
-        AI* ai;
+        static const int MAP_WIDTH = 1600, MAP_HEIGHT = 900;    // The size of the window
+        static const int FPS = 60;  // The FPS which the game runs at
+
+        void Run(int *argc, char** argv, int w, int h); // The initiation method
+        void Update();              // Updates the objects
+        void Draw();                // Draws all of the objects and such
+
+        SDL_Surface* screen;        // The main screen everything is drawn to and then shown
+        Vector2D vect;              // Saves the position of the base in order to create a catapult at that position
+        Map* map;                   // The pointer to the current map.
+        AI* ai;                     // The pointer to the current AI.
 
         bool bRunning;				// Is the game running or not?
         bool bDebug;				// Are we running in debug mode or not?
@@ -48,7 +41,7 @@ class MyGame
         MyGame(void);
 
         int mx, my;					// Mouse X and Y pos (could be Vector2D?)
-        Uint32 start;				// Idontknowactually
+        Uint32 start;				// Stores the games current tick-rate in order to keep a stable frame-per-second rate.
         SDL_Event event;			// Handles SDL events eg. human input
 };
 

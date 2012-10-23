@@ -1,16 +1,9 @@
 #include "map.h"
-#include "math.h"
-#include <iostream>
-#include <fstream>
-#include "vector2D.h"
-#include "SDL/SDL.h"
-#include "drawing.h"
-#include <time.h>
-#include "game.h"
 
-Map::Map(SDL_Surface* screen, int SegmentCount)
+Map::Map(SDL_Surface* screen, int SegmentCount, Vector2D WinSize)
 {
-    Map::GenerateMap(screen, SegmentCount, MyGame::MAP_HEIGHT, MyGame::MAP_HEIGHT / 2, 20);
+    WindowSize = WinSize;
+    Map::GenerateMap(screen, SegmentCount, WindowSize.y, WindowSize.y / 2, 20);
     GoalIndexRange = Vector2D(0,0);
 }
 
@@ -20,7 +13,7 @@ void Map::GenerateMap(SDL_Surface* screen, int subSegments, int minHeight, int m
     diff = diff == 0 ? 1 : diff;
 
     int SegmentCount = pow(2, subSegments) + 1;
-    float SegmentDistance = (float)MyGame::MAP_WIDTH / ((float)SegmentCount - 1);
+    float SegmentDistance = (float)WindowSize.x / ((float)SegmentCount - 1);
     // Kom precis på en sak här: +1 sen -1.. hm.. vågar inte ändra nu dock
     // för då kommer allt säkert dö :P
 
@@ -39,7 +32,7 @@ void Map::GenerateMap(SDL_Surface* screen, int subSegments, int minHeight, int m
         int yDiff = 0;
 
         if(i == SegmentCount - 1)
-            xPos = MyGame::MAP_WIDTH - 1;
+            xPos = WindowSize.x - 1;
 
         segments[i].x = xPos;
 
@@ -93,8 +86,8 @@ void Map::DrawMap(bool debug)
             glBegin(GL_QUADS);
             glVertex2i(Segments[i - 1].x, Segments[i - 1].y);
             glVertex2i(Segments[i].x, Segments[i].y);
-            glVertex2i(Segments[i].x, MyGame::MAP_HEIGHT);
-            glVertex2i(Segments[i - 1].x, MyGame::MAP_HEIGHT);
+            glVertex2i(Segments[i].x, WindowSize.y);
+            glVertex2i(Segments[i - 1].x, WindowSize.y);
             glEnd();
         }
 
@@ -126,7 +119,7 @@ Vector2D Map::GenerateBase(int baseEntry, int baseLength, bool bIsGoal)
     Vector2D vect;
     // Force minimum and maximum length so we don't get index errors
     baseLength = baseLength < 6 ? 6 : baseLength;
-    baseLength = baseLength > MyGame::MAP_WIDTH - baseLength ? MyGame::MAP_WIDTH - baseLength : baseLength;
+    baseLength = baseLength > WindowSize.x - baseLength ? WindowSize.x - baseLength : baseLength;
 
     int averageHeight = 0;
     for(int i = baseEntry; i < baseEntry+baseLength; i++)

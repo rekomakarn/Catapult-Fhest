@@ -4,10 +4,14 @@ Catapult::Catapult()
 {
     Position.x = 0;
     Position.y = 0;
+
     iLength = 40;
     iHeight = 10;
+
     proj = NULL;
-    iRotation = 90;
+
+    // Sets the defualt rotation, max force and sets the default force.
+    iRotation = 45;
     fMaxForce = 30;
     ChangeForce(15);
 
@@ -19,10 +23,13 @@ void Catapult::InitForceGauge()
 {
     // UHH OH MAGIC NUMBERS
     forcegauge.iWindowSize = 1600;
+    // Sets the size of the forcegauge.
     forcegauge.SetSize(3);
+    // Sets the forcegauge's position to slightly above the catapult.
     forcegauge.Position = Position + Vector2D(-20, -50);
 }
 
+// Changes the current force and prevents it from becoming greater than the maximum force or lower than 0.
 void Catapult::ChangeForce(int f)
 {
     if(f < fMaxForce && f > 0)
@@ -35,6 +42,7 @@ void Catapult::ChangeForce(int f)
     forcegauge.SetCurrentForce(fForce / fMaxForce);
 }
 
+// Rotates the catapult.
 void Catapult::Rotate(int angle, bool CW)
 {
     iRotation += CW ? angle : -angle;
@@ -42,10 +50,18 @@ void Catapult::Rotate(int angle, bool CW)
 
 void Catapult::Update()
 {
+    // Catapult calls the update for projectile, if it exists.
     if(proj)
-		proj->Update();									// Catapult calls the update for projectile
+		proj->Update();
+
+    // If the projectile collides with something bCollisionActive is set to false. In that case, tell the AI the data gathered from the collision and destroy the projectile.
 	if(proj && proj->bCollisionActive == false)
 	{
+	    if(proj->colData)
+        {
+            // Give the ai the data from the projectiles collision.
+        }
+
 		proj->Destroy();
 		proj = NULL;
 
@@ -53,6 +69,7 @@ void Catapult::Update()
 	}
 }
 
+// Draws the projectile.
 void Catapult::Draw()
 {
     forcegauge.Draw();
@@ -102,6 +119,7 @@ void Catapult::Draw()
     glEnd();
 }
 
+// Spawns the projectile
 void Catapult::SpawnProjectile()
 {
 	if(proj)										// If there already is a projectile active

@@ -22,27 +22,14 @@ MyGame::~MyGame(void)
     delete m_instance;
 }
 
-// These two might be useful for drawing lines I think?
-void MyGame::SwapValues(int &a, int &b)
-{
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
-void MyGame::SwapCoordinates(Vector2D &obj)
-{
-    float temp = obj.x;
-    obj.x = obj.y;
-    obj.y = temp;
-}
-
 void MyGame::Run(int *argc, char** argv, int w, int h)
 {
     //Start SDL
     SDL_Init( SDL_INIT_EVERYTHING );
 
+    // bRunning is saved in order to later check if the user wants to exit the program.
     bRunning = true;
+
     screen = NULL;
 
     // OpenGL stuff
@@ -55,34 +42,38 @@ void MyGame::Run(int *argc, char** argv, int w, int h)
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
+    // Sets thet window caption
     SDL_WM_SetCaption("Catapult", NULL);
 
+    // Initializes the screen, and tells it to use opengl.
     screen = SDL_SetVideoMode(MAP_WIDTH, MAP_HEIGHT, 32, SDL_OPENGL);
 
     // I only divide in order to be able to use the RGB system. For whatever reason this function wants to use a double from 0 - 1
     glClearColor(0, 0.8, 1, 1);
+
+    // Sets the viewport to be the entire map
     glViewport(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
+    // Sets the shade model
     glShadeModel(GL_SMOOTH);
 
+    // Sets the projection mode. In this case only need 2D and thusly we use GL_PROJECTION
     glMatrixMode(GL_PROJECTION);
+    // Saves the projection mode and settings
     glLoadIdentity();
 
+    // Sets the default force
     Vector2D force = Vector2D(5, -10);
 
-    // Map
-    map = new Map(screen, 8);
+    // Creates a new map and initializes it.
+    map = new Map(screen, 8, Vector2D(MAP_WIDTH, MAP_HEIGHT));
     vect = map->GenerateBase(20, 30, false);
     map->GenerateBase(200, 10, true);
 
-    // Catapult
+    // Initializes the catapult and it's components.
     catapult = Catapult();
     catapult.Position = vect;
     catapult.InitForceGauge();
-
-    //ProjectileLines = new Vector2D[10][];
-
-    //ProjectileLines[0][0] = NULL;
 
     // Test Particle
     part = new Particles();
@@ -117,11 +108,14 @@ void MyGame::Update()
     // Free Drawing
     bool bFreeDraw = false;
 
+    // Saves the ticks to set an FPS-cap
     start = SDL_GetTicks();
 
+    // Saves the keystate of the keyboard. Used to allow input.
     Uint8* keystates = SDL_GetKeyState(NULL);
 
     SDL_Event event;
+    // Input
     while(SDL_PollEvent(&event))
     {
         switch(event.type)
