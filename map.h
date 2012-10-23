@@ -20,7 +20,7 @@ class Map
         void GenerateMap(SDL_Surface* screen, int subSegments, int minHeight, int maxHeight, int diff, int seed);   // Generates the map according to a specific random seed.
         void GenerateMap(SDL_Surface* screen, int subSegments, int minHeight, int maxHeight, int diff);             // Generates the map according to a random random seed.
 
-        void DrawMap(bool debug             // Draws the map.
+        void DrawMap(bool debug);             // Draws the map.
 
         Vector2D GenerateBase(int baseEntry, int baseLength, bool bIsGoal); // Generates two bases on the map.
 
