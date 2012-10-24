@@ -71,9 +71,9 @@ void MyGame::Run(int *argc, char** argv, int w, int h)
     map->GenerateBase(200, 10, true);
 
     // Initializes the catapult and it's components.
-    catapult = Catapult();
-    catapult.Position = vect;
-    catapult.InitForceGauge();
+    catapult = new Catapult();
+    catapult->Position = vect;
+    catapult->InitForceGauge();
 
     // Test Particle
     part = new Particles();
@@ -145,23 +145,23 @@ void MyGame::Update()
                 }
                 if(event.key.keysym.sym == SDLK_p)
                 {
-                    catapult.SpawnProjectile();
+                    catapult->SpawnProjectile();
                 }
                 if(event.key.keysym.sym == SDLK_PAGEUP)
                 {
-                    catapult.Rotate(5, false);
+                    catapult->Rotate(5, false);
                 }
                 if(event.key.keysym.sym == SDLK_PAGEDOWN)
                 {
-                    catapult.Rotate(5, true);
+                    catapult->Rotate(5, true);
                 }
                 if(event.key.keysym.sym == SDLK_KP_PLUS)
                 {
-                    catapult.ChangeForce(catapult.fForce + catapult.fMaxForce / 10);
+                    catapult->ChangeForce(catapult->fForce + catapult->fMaxForce / 10);
                 }
                 if(event.key.keysym.sym == SDLK_KP_MINUS)
                 {
-                    catapult.ChangeForce(catapult.fForce - catapult.fMaxForce / 10);
+                    catapult->ChangeForce(catapult->fForce - catapult->fMaxForce / 10);
                 }
                 if(event.key.keysym.sym == SDLK_ESCAPE)
                 {
@@ -188,7 +188,7 @@ void MyGame::Update()
 
     glColor4ub(0, 255, 0, 255);
 
-    catapult.Update();
+    catapult->Update();
 
     if(bFreeDraw)
     {
@@ -221,7 +221,7 @@ void MyGame::Draw()
     glVertex2i(0, 0);
     glEnd();
 
-    catapult.Draw();
+    catapult->Draw();
 
     // Finally draw the whole map
     map->DrawMap(bDebug);

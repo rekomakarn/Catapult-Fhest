@@ -1,8 +1,8 @@
-#include "vector2D.h"
-#include "SDL/SDL_opengl.h"
-
 #ifndef FORCEGAUGE_H_INCLUDED
 #define FORCEGAUGE_H_INCLUDED
+
+#include "vector2D.h"
+#include "SDL/SDL_opengl.h"
 
 class ForceGauge
 {

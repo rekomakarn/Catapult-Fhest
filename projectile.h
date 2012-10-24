@@ -1,16 +1,16 @@
+#ifndef PROJECTILE_H_INCLUDED
+#define PROJECTILE_H_INCLUDED
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_opengl.h"
 #include <iostream>
 #include "math.h"
-
 #include "vector2D.h"
 #include "physics.h"
 #include "map.h"
 #include "physics.h"
 #include "collisiondata.h"
-
-#ifndef PROJECTILE_H_INCLUDED
-#define PROJECTILE_H_INCLUDED
+#include "game.h"
 
 class Projectile
 {

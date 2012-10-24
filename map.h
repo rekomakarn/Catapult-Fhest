@@ -1,16 +1,13 @@
+#ifndef MAP_H_INCLUDED
+#define MAP_H_INCLUDED
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_opengl.h"
 #include <iostream>
 #include <fstream>
 #include <time.h>
 #include "math.h"
-
 #include "vector2D.h"
-
-#ifndef MAP_H_INCLUDED
-#define MAP_H_INCLUDED
-
-class Game;
 
 class Map
 {

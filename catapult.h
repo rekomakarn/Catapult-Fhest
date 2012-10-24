@@ -1,14 +1,15 @@
+#ifndef CATAPULT_H_INCLUDED
+#define CATAPULT_H_INCLUDED
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_opengl.h"
 #include <iostream>
-
 #include "vector2D.h"
 #include "forcegauge.h"
 #include "projectile.h"
 #include "ai.h"
 
-#ifndef CATAPULT_H_INCLUDED
-#define CATAPULT_H_INCLUDED
+class Projectile;
 
 class Catapult
 {
