@@ -139,7 +139,7 @@ Vector2D Map::GenerateBase(int baseEntry, int baseLength, bool bIsGoal)
             this->Segments[i].y = averageHeight;
     }
 
-    vect = Segments[(baseEntry+baseLength) / 2];
+    vect = Segments[(baseEntry + (baseEntry+baseLength)) / 2];
 
     if(bIsGoal)
     {

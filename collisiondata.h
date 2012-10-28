@@ -6,7 +6,7 @@
 class CollisionData
 {
     public:
-        enum CollisionType {Short, Long, OutMapFar, OutMapShort};
+        enum CollisionType {Short, Long, Hit};
         CollisionType colType;
 
         CollisionData(Vector2D force, Vector2D position);

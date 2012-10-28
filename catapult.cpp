@@ -12,11 +12,16 @@ Catapult::Catapult()
 
     // Sets the defualt rotation, max force and sets the default force.
     iRotation = 45;
-    fMaxForce = 30;
+    fMaxForce = 50;
     ChangeForce(15);
 
     // Instantiate the AI
-    ai = new AI();
+    ai = new AI(fMaxForce, this);
+}
+
+Catapult::~Catapult()
+{
+    delete ai;
 }
 
 void Catapult::InitForceGauge()
@@ -57,10 +62,8 @@ void Catapult::Update()
     // If the projectile collides with something bCollisionActive is set to false. In that case, tell the AI the data gathered from the collision and destroy the projectile.
 	if(proj && proj->bCollisionActive == false)
 	{
-	    if(proj->colData)
-        {
-            // Give the ai the data from the projectiles collision.
-        }
+        // Give the ai the data from the projectiles collision.
+        ai->InsertData(proj->colData->colType);
 
 		proj->Destroy();
 		proj = NULL;
@@ -73,6 +76,8 @@ void Catapult::Update()
 void Catapult::Draw()
 {
     forcegauge.Draw();
+
+    ai->graph->Draw();
 
     if(proj)
     	if(proj->bCollisionActive)
@@ -117,6 +122,11 @@ void Catapult::Draw()
     glVertex2i(Position.x, Position.y - 20);
     glVertex2i(Position.x + 10, Position.y);
     glEnd();
+}
+
+void Catapult::SendDataToAI(CollisionData::CollisionType colType)
+{
+    ai->InsertData(colType);
 }
 
 // Spawns the projectile

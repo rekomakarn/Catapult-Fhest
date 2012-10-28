@@ -19,6 +19,10 @@ MyGame::MyGame(void)
 }
 MyGame::~MyGame(void)
 {
+    delete map;
+    delete catapult;
+    delete base;
+    delete screen;
     delete m_instance;
 }
 
@@ -64,11 +68,13 @@ void MyGame::Run(int *argc, char** argv, int w, int h)
 
     // Sets the default force
     Vector2D force = Vector2D(5, -10);
-
+    Vector2D vect2;
     // Creates a new map and initializes it.
     map = new Map(screen, 8, Vector2D(MAP_WIDTH, MAP_HEIGHT));
     vect = map->GenerateBase(20, 30, false);
-    map->GenerateBase(200, 10, true);
+    vect2 = map->GenerateBase(200, 10, true);
+
+    base = new Base(vect2.x, vect2.y);
 
     // Initializes the catapult and it's components.
     catapult = new Catapult();
@@ -145,7 +151,7 @@ void MyGame::Update()
                 }
                 if(event.key.keysym.sym == SDLK_p)
                 {
-                    catapult->SpawnProjectile();
+                    catapult->ai->DecideNewForce();
                 }
                 if(event.key.keysym.sym == SDLK_PAGEUP)
                 {
@@ -157,15 +163,15 @@ void MyGame::Update()
                 }
                 if(event.key.keysym.sym == SDLK_KP_PLUS)
                 {
-                    catapult->ChangeForce(catapult->fForce + catapult->fMaxForce / 10);
+                    catapult->ChangeForce(catapult->fForce + catapult->fMaxForce / 20);
                 }
                 if(event.key.keysym.sym == SDLK_KP_MINUS)
                 {
-                    catapult->ChangeForce(catapult->fForce - catapult->fMaxForce / 10);
+                    catapult->ChangeForce(catapult->fForce - catapult->fMaxForce / 20);
                 }
                 if(event.key.keysym.sym == SDLK_ESCAPE)
                 {
-                    SDL_Quit();
+                    bRunning = false;
                 }
             break;
         }
@@ -194,6 +200,7 @@ void MyGame::Update()
     {
         map->FreeDraw(mx, my);
     }
+
     part->Update();
 
     // Call Draw() after everything is updated
@@ -222,6 +229,8 @@ void MyGame::Draw()
     glEnd();
 
     catapult->Draw();
+
+    base->Draw();
 
     // Finally draw the whole map
     map->DrawMap(bDebug);

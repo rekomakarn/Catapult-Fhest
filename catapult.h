@@ -10,6 +10,7 @@
 #include "ai.h"
 
 class Projectile;
+class AI;
 
 class Catapult
 {
@@ -23,6 +24,7 @@ class Catapult
         Projectile* proj;					// The attached projectile, hopefully able to support more in the future.
 
         Catapult();                         // Constructor.
+        ~Catapult();
         void Update();                      // Updates the catapult and it's components.
         void Draw();                        // Draws the catapult and calls it's components draw-methods.
 
@@ -31,6 +33,8 @@ class Catapult
         void ChangeForce(int f);            // Changes the force of the catapult.
 
         void SpawnProjectile();             // Spawns the projectile.
+
+        void SendDataToAI(CollisionData::CollisionType colType);
 
         AI* ai;                             // The catapult's AI.
 };

@@ -8,6 +8,7 @@
 #include <time.h>
 #include "math.h"
 #include "vector2D.h"
+#include "base.h"
 
 class Map
 {

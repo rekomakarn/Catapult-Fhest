@@ -34,7 +34,7 @@ class Projectile
         int iLineIndex, iLineAmount;                // Sets the amount of lines, as well as which one to draw next.
         Vector2D* LinePoints;                       // Saves the points between which the lines are drawn.
 
-        CollisionData* colData;                     // The object where the collisions data is stored.
+        CollisionData *colData;                     // The object where the collisions data is stored.
 };
 
 #endif // PROJECTILE_H_INCLUDED

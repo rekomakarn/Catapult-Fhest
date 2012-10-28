@@ -30,12 +30,13 @@ class MyGame
         SDL_Surface* screen;        // The main screen everything is drawn to and then shown
         Vector2D vect;              // Saves the position of the base in order to create a catapult at that position
         Map* map;                   // The pointer to the current map.
-        AI* ai;                     // The pointer to the current AI.
 
         bool bRunning;				// Is the game running or not?
         bool bDebug;				// Are we running in debug mode or not?
         Particles* part;			// Random test particles
         Catapult* catapult;			// The main cataput instance
+
+        Base* base;
 
     private:
         static MyGame* m_instance;

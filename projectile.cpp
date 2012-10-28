@@ -2,21 +2,25 @@
 
 Projectile::Projectile()
 {
-
+    colData = new CollisionData(Vector2D(0,0), Vector2D(0,0));
 }
 
 Projectile::~Projectile()
 {
-
+    delete LinePoints;
+    delete colData;
 }
 
 Projectile::Projectile(Vector2D &vect, Vector2D &force)
 {
+    // Initializes the collision data
+    colData = new CollisionData(Vector2D(0,0), Vector2D(0,0));
+
     // This decides if the projectile is active and should not be destroyed.
     bCollisionActive = true;
 
     // Sets the mass of the projectile, has no effect at the moment.
-    fMass = 10;
+    fMass = 1;
 
     // Decides the size of the projectile visually.
     fSize = 10;
@@ -28,8 +32,8 @@ Projectile::Projectile(Vector2D &vect, Vector2D &force)
     MoveVector.x = force.x;
     MoveVector.y = force.y;
 
-    // Rotationspeed is set by using semi-magic numbers.
-    iRotationSpeed = force.x / 2;
+    // Rotationspeed
+    iRotationSpeed = sqrt(pow(2, abs(force.x)) + pow(2, abs(force.y))) / 30;
 
     // Initiates the drawing of lines behind the projectile.
     iLineAmount = 1;
@@ -76,30 +80,46 @@ void Projectile::CheckCollision()
     {
         int indexPos = ceilf(Position.x / segmentDistance);
 
+        // Pythagoras theorem to check the distance between the base and the projectile
+        if(Position.SqrtDistance(MyGame::Instance()->base->Position) < pow((fSize / 1.0f + MyGame::Instance()->base->fSize / 1.0f),2.0f))
+        {
+            colData = new CollisionData(MoveVector, Position);
+
+            colData->colType = CollisionData::Hit;
+
+            // std::cout << "Projectile hit the base" << std::endl;
+
+            bCollisionActive = false;
+        }
+
         // Projectile collides with ground.
         if(Position.y >= segments[indexPos].y && Position.x + 5 >= segments[indexPos].x && Position.x - 5 <= segments[indexPos].x) // Missed target, hit gound
         {
             // Creates new collision data for when the projectile hits the ground.
             colData = new CollisionData(MoveVector, Position);
 
-            // Stub for long shot
-//            colData.colType = Position.x < 5 /* Base's x-position */ ? CollisionData.CollisionType.Short : CollisionData.CollisionType.Long;
+            // Stub for missed shot
+            colData->colType = Position.x < MyGame::Instance()->base->Position.x ? CollisionData::Short : CollisionData::Long;
 
-            std::cout << "Projectile::CheckCollision(): HIT! index=" << indexPos << "\t x=" << segments[indexPos].x << "\t y="<< segments[indexPos].y << "!" << std::endl;
+            // std::cout << "Projectile::CheckCollision(): Hit the ground at : " << indexPos << "\t x=" << segments[indexPos].x << "\t y="<< segments[indexPos].y << "!" << std::endl;
             bCollisionActive = false;
         }
 
         // Projectile goes outside the window to the right.
         else if(Position.x > MyGame::MAP_WIDTH)
         {
-            std::cout << "Projectile::CheckCollision(): Projectile went outside the map to the right!" << std::endl;
+            colData = new CollisionData(MoveVector, Position);
+
+            colData->colType = CollisionData::Long;
+
+            // std::cout << "Projectile::CheckCollision(): Projectile went outside the map to the right!" << std::endl;
             bCollisionActive = false;
         }
 
         // Projectile goes outside the window to the left.
         else if(Position.x < 0)
         {
-            std::cout <<"Projectile::CheckCollision(): Projectile went outside the map to the left!" << std::endl;
+            // std::cout <<"Projectile::CheckCollision(): Projectile went outside the map to the left!" << std::endl;
             bCollisionActive = false;
         }
     }

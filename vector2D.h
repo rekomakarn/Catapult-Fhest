@@ -1,6 +1,9 @@
 #ifndef VECTOR2D_H_INCLUDED
 #define VECTOR2D_H_INCLUDED
 
+#include "math.h"
+#include <iostream>
+
 class Vector2D
 {
     public:
@@ -13,6 +16,8 @@ class Vector2D
         Vector2D operator-(const Vector2D& obj);   // Operator Overload
         Vector2D operator+(const Vector2D& obj);   // Operator Overload
         Vector2D operator+=(const Vector2D& obj);   // Operator Overload
+
+        float SqrtDistance(const Vector2D &obj);
 
         Vector2D Rotate(float a);
 };

@@ -1,6 +1,4 @@
 #include "vector2D.h"
-#include "math.h"
-#include <iostream>
 
 Vector2D::Vector2D()
 {
@@ -47,6 +45,10 @@ Vector2D Vector2D::operator+=(const Vector2D& obj)
     return Vector2D(newX, newY);
 }
 
+float Vector2D::SqrtDistance(const Vector2D &obj)
+{
+    return pow(x - obj.x, 2.0f) + pow(y - obj.y, 2.0f);
+}
 
 Vector2D Vector2D::Rotate(float a)
 {
