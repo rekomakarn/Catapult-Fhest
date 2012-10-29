@@ -15,9 +15,16 @@
 class Projectile
 {
     public:
-        int iRotation, iRotationSpeed;              // The speed at which the projectile rotates.
+        float iRotation;
+        float iRotationSpeed;                       // The speed at which the projectile rotates.
+        Vector2D Acceleration;                        // Acceleration
+        Vector2D Force;
         float fMass;                                // The mass of the projectile. Currently not used.
         float fSize;                                // The visual size of the projectile.
+        float fWeight;
+        float fVolume;
+        float fDensity;
+        float fTorque;                              // The Torque of the projectile
         Vector2D Position;                          // The current position of the projectile.
         Vector2D MoveVector;                        // The current force the projectile has.
         bool bCollisionActive;                      // Is the projectile active, or should it be destroyed?
