@@ -21,8 +21,36 @@ void AI::DecideNewForce()
     if(iTries == 0)
     {
         angledata[iCurrentAngleIndex].LongShot.fForce = fMaxForce;
-        angledata[iCurrentAngleIndex].shortShot.fForce = 0;
         angledata[iCurrentAngleIndex].fLastForce = fMaxForce;
+
+        if(iCurrentAngleIndex == 0 || iCurrentAngleIndex == iArraySize)
+        {
+            angledata[iCurrentAngleIndex].shortShot.fForce = 0;
+        }
+        else
+        {
+            int lowerIndex = 0, higherIndex = 0;
+
+            for(int i = iCurrentAngleIndex; i > 0; i--)
+            {
+                if(angledata[i].bHasBeenUsed)
+                {
+                    lowerIndex = i;
+                    break;
+                }
+            }
+
+            for(int i = iCurrentAngleIndex; i < iArraySize; i++)
+            {
+                if(angledata[i].bHasBeenUsed)
+                {
+                    higherIndex = i;
+                    break;
+                }
+            }
+
+            angledata[iCurrentAngleIndex].shortShot.fForce = (angledata[lowerIndex].fLastForce + ((angledata[higherIndex].fLastForce - angledata[lowerIndex].fLastForce) / 2)) / 2;
+        }
     }
 
     else
