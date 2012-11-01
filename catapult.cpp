@@ -64,11 +64,6 @@ void Catapult::Update()
 	{
         // Give the ai the data from the projectiles collision.
         ai->InsertData(proj->colData->colType);
-
-		proj->Destroy();
-		proj = NULL;
-
-		SpawnProjectile();
 	}
 }
 
@@ -106,6 +101,7 @@ void Catapult::Draw()
     glVertex2i(vect1.x, vect1.y);
     glVertex2i(vect2.x, vect2.y);
     glVertex2i(vect3.x, vect3.y);
+
     glVertex2i(vect4.x, vect4.y);
     glEnd();
 
@@ -132,12 +128,6 @@ void Catapult::SendDataToAI(CollisionData::CollisionType colType)
 // Spawns the projectile
 void Catapult::SpawnProjectile()
 {
-	if(proj)										// If there already is a projectile active
-	{
-		proj->Destroy();							// then destroy it before creating a new one
-		proj = NULL;
-	}
-
     Vector2D vect = Vector2D(fForce, 0);
     vect = vect.Rotate(-iRotation);
     proj = new Projectile(Position, vect);

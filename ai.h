@@ -33,6 +33,12 @@ class AI
             ShotData LongShot;
 
             float fLastForce;
+
+            AngleData()
+            {
+                bHasBeenUsed = false;
+                shortShot.fForce = 0;
+            }
         };
 
         Catapult *Owner;

@@ -7,6 +7,8 @@ AI::AI(float maxforce, Catapult *cata)
     iMinAngle = 45;
     iMaxAngle = 89;
     iArraySize = 19;
+    iTries = 0;
+    iCurrentAngleIndex = 0;
     graph = new Graph(iArraySize, this);
     srand(time(NULL));
 }
@@ -48,7 +50,6 @@ void AI::DecideNewForce()
                     break;
                 }
             }
-
             angledata[iCurrentAngleIndex].shortShot.fForce = (angledata[lowerIndex].fLastForce + ((angledata[higherIndex].fLastForce - angledata[lowerIndex].fLastForce) / 2)) / 2;
         }
     }
@@ -60,13 +61,20 @@ void AI::DecideNewForce()
 
     Owner->ChangeForce(angledata[iCurrentAngleIndex].fLastForce);
     Owner->iRotation = iMinAngle + iCurrentAngleIndex * ((iMaxAngle - iMinAngle) / iArraySize);
-    Owner->SpawnProjectile();
 
+    if(Owner->proj)										// If there already is a projectile active
+	{
+		//Owner->proj->Destroy();							// then destroy it before creating a new one
+		Owner->proj = NULL;
+	}
+
+    Owner->SpawnProjectile();
     iTries++;
 
     if(iTries > 10)
     {
         NextAngle();
+        DecideNewForce();
     }
 }
 
@@ -103,8 +111,10 @@ void AI::NextAngle()
     // Variables for finding the next point
     int index = 0, lowpoint = 0, highpoint = 0, length = 0;
 
+    float ReCalcIndex = (float)iCurrentAngleIndex, ReSize = (float)iArraySize;
+
     // Adds a new point to the graph.
-    graph->AddPoint(iCurrentAngleIndex, (angledata[iCurrentAngleIndex].fLastForce / fMaxForce), ((float)iCurrentAngleIndex / (float)iArraySize));
+    graph->AddPoint(iCurrentAngleIndex, (angledata[iCurrentAngleIndex].fLastForce / fMaxForce), (ReCalcIndex / ReSize));
 
     // Sets the current angledata to used so that can be checked later.
     angledata[iCurrentAngleIndex].bHasBeenUsed = true;
@@ -136,7 +146,6 @@ void AI::NextAngle()
 
             index++;
         }
-
         // Sets the next index to the calculated value.
         iCurrentAngleIndex = lowpoint + ((highpoint - lowpoint) / 2);
     }

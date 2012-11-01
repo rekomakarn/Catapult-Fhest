@@ -19,9 +19,14 @@ class Graph
         {
             Vector2D Position;
             bool bIsUsed;
+
+            Point()
+            {
+                bIsUsed = false;
+            }
         };
 
-        int iSize;
+        float fSize;
         int iArraySize;
         AI *Owner;
         Point *Points;

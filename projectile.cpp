@@ -7,7 +7,7 @@ Projectile::Projectile()
 
 Projectile::~Projectile()
 {
-    delete LinePoints;
+    delete []LinePoints;
     delete colData;
 }
 

@@ -11,7 +11,7 @@ Graph::Graph(int arraysize, AI *ai)
     Owner = ai;
     Points = new Point[iArraySize];
     iActivePoints = 0;
-    iSize = 400;
+    fSize = 400;
 }
 
 Graph::~Graph()
@@ -33,18 +33,18 @@ void Graph::Draw()
     glBegin(GL_QUADS);
     glColor4ub(255, 255, 255, 255);
     glVertex2i(50, 50);
-    glVertex2i(50 + iSize, 50);
-    glVertex2i(50 + iSize, 50 + iSize);
-    glVertex2i(50, 50 + iSize);
+    glVertex2i(50 + fSize, 50);
+    glVertex2i(50 + fSize, 50 + fSize);
+    glVertex2i(50, 50 + fSize);
     glEnd();
 
     // Outline around the graph
     glBegin(GL_LINE_STRIP);
     glColor4ub(0, 0, 0, 255);
     glVertex2i(50, 50);
-    glVertex2i(50 + iSize, 50);
-    glVertex2i(50 + iSize, 50 + iSize);
-    glVertex2i(50, 50 + iSize);
+    glVertex2i(50 + fSize, 50);
+    glVertex2i(50 + fSize, 50 + fSize);
+    glVertex2i(50, 50 + fSize);
     glVertex2i(50, 50);
     glEnd();
 
@@ -57,7 +57,7 @@ void Graph::Draw()
             if(Points[i].bIsUsed)
             {
                 glColor4ub(0, 0, 0, 255);
-                glVertex2i(50 + Points[i].Position.x * iSize, 50 + iSize - Points[i].Position.y * iSize);
+                glVertex2i(50 + Points[i].Position.x * fSize, 50 + fSize - Points[i].Position.y * fSize);
             }
         }
         glEnd();
@@ -71,8 +71,8 @@ void Graph::Draw()
                 if(Points[i].bIsUsed && i != 0 && i != iArraySize)
                 {
                     glColor4ub(255, 0, 0, 255);
-                    glVertex2i(50 + Points[i].Position.x * iSize, 50);
-                    glVertex2i(50 + Points[i].Position.x * iSize, 50 + iSize);
+                    glVertex2i(50 + Points[i].Position.x * fSize, 50);
+                    glVertex2i(50 + Points[i].Position.x * fSize, 50 + fSize);
                 }
             }
         }
